@@ -32,6 +32,9 @@ Vector3D Vector3D::operator+(const Vector3D &vector) {
 float Vector3D::operator*(const Vector3D &vector) {
 	return x * vector[0] + y * vector[1] + z * vector[2];
 }
+Vector3D operator*(float scalar, const Vector3D &vector) {
+	return Vector3D(scalar * vector[0], scalar * vector[1], scalar * vector[2]);
+}
 
 Matrix3D::Matrix3D(): matrix{} {}
 Matrix3D::Matrix3D(float _matrix[3][3]) {
@@ -119,6 +122,19 @@ Vector3D Matrix3D::operator*(const Vector3D &vector) {
 		matrix[0] * vector[0] + matrix[1] * vector[1] + matrix[2] * vector[2], 
 		matrix[3] * vector[0] + matrix[4] * vector[1] + matrix[5] * vector[2], 
 		matrix[6] * vector[0] + matrix[7] * vector[1] + matrix[8] * vector[2]
+	);
+}
+Matrix3D operator*(float scalar, const Matrix3D& matrix) {
+	return Matrix3D(
+		scalar * matrix[0], 
+		scalar * matrix[1], 
+		scalar * matrix[2], 
+		scalar * matrix[3], 
+		scalar * matrix[4], 
+		scalar * matrix[5], 
+		scalar * matrix[6], 
+		scalar * matrix[7], 
+		scalar * matrix[8]  
 	);
 }
 

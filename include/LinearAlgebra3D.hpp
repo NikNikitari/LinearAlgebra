@@ -53,3 +53,6 @@ public:
 	
 	~Matrix3D() = default;
 };
+
+Vector3D API operator*(float scalar, const Vector3D &vector);
+Matrix3D API operator*(float scalar, const Matrix3D &matrix);
