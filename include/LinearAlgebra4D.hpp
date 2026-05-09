@@ -53,3 +53,6 @@ public:
 	
 	~Matrix4D() = default;
 };
+
+Vector4D API operator*(float scalar, const Vector4D &vector);
+Matrix4D API operator*(float scalar, const Matrix4D &matrix);

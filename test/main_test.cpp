@@ -175,6 +175,12 @@ TEST_F(Vector4DTest, DotProduct) {
 	EXPECT_EQ(vec1 * vec0, vec0 * vec1);
 	EXPECT_EQ(vec1 * vec1, 39);
 }
+TEST_F(Vector4DTest, ScalarMultiplication) {
+	EXPECT_EQ(1.0f * vec0, vec0);
+	EXPECT_EQ(1.0f * vec1, vec1);
+	EXPECT_EQ(2.0f * vec0, vec0);
+	EXPECT_EQ(2.0f * vec1, Vector4D(2, 4, 6, 10));
+}
 
 TEST_F(Matrix2DTest, GetByIndex) {
 	EXPECT_EQ(matrix2[0], 1);
@@ -430,4 +436,22 @@ TEST_F(Matrix4DTest, MatrixVectorMultiplication) {
 	EXPECT_EQ(matrix0 * vec1, vec0);
 	EXPECT_EQ(matrix1 * vec1, vec1);
 	EXPECT_EQ(matrix2 * vec1, Vector4D(39, 153, 307, 483));
+}
+TEST_F(Matrix4DTest, ScalarMultiplication) {
+	EXPECT_EQ(1.0f * matrix0, matrix0);
+	EXPECT_EQ(1.0f * matrix1, matrix1);
+	EXPECT_EQ(1.0f * matrix2, matrix2);
+	EXPECT_EQ(2.0f * matrix0, matrix0);
+	EXPECT_EQ(2.0f * matrix1, Matrix4D({
+		{2, 0, 0, 0},
+		{0, 2, 0, 0},
+		{0, 0, 2, 0},
+		{0, 0, 0, 2}
+	}));
+	EXPECT_EQ(10.0f * matrix2, Matrix4D({
+		{10, 20, 30, 50},
+		{70, 110, 130, 170},
+		{190, 230, 290, 310},
+		{370, 410, 430, 470}
+	}));
 }

@@ -34,6 +34,9 @@ Vector4D Vector4D::operator+(const Vector4D &vector) {
 float Vector4D::operator*(const Vector4D &vector) {
 	return x * vector[0] + y * vector[1] + z * vector[2] + w * vector[3];
 }
+Vector4D operator*(float scalar, const Vector4D &vector) {
+	return Vector4D(scalar * vector[0], scalar * vector[1], scalar * vector[2], scalar * vector[3]);
+}
 
 Matrix4D::Matrix4D(): matrix{} {}
 Matrix4D::Matrix4D(float _matrix[4][4]) {
@@ -151,6 +154,26 @@ Vector4D Matrix4D::operator*(const Vector4D &vector) {
 		vector[0] * matrix[4] + vector[1] * matrix[5] + vector[2] * matrix[6] + vector[3] * matrix[7],
 		vector[0] * matrix[8] + vector[1] * matrix[9] + vector[2] * matrix[10] + vector[3] * matrix[11],
 		vector[0] * matrix[12] + vector[1] * matrix[13] + vector[2] * matrix[14] + vector[3] * matrix[15]
+	);
+}
+Matrix4D operator*(float scalar, const Matrix4D& matrix) {
+	return Matrix4D(
+		scalar * matrix[0] , 
+		scalar * matrix[1] , 
+		scalar * matrix[2] , 
+		scalar * matrix[3] , 
+		scalar * matrix[4] , 
+		scalar * matrix[5] , 
+		scalar * matrix[6] , 
+		scalar * matrix[7] , 
+		scalar * matrix[8] , 
+		scalar * matrix[9] , 
+		scalar * matrix[10], 
+		scalar * matrix[11], 
+		scalar * matrix[12], 
+		scalar * matrix[13], 
+		scalar * matrix[14], 
+		scalar * matrix[15]   
 	);
 }
 
