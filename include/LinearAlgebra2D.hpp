@@ -15,11 +15,11 @@ private:
 	float x; float y;
 public:
 	Vector2D();
-	Vector2D(const float vector[2]);
-	Vector2D(const float& _x, const float& _y);
+	Vector2D(float vector[2]);
+	Vector2D(float _x, float _y);
 	Vector2D(std::initializer_list<float> vector);
 	
-	const float& operator[](int index) const;
+	float operator[](int index) const;
 	
 	const bool operator==(const Vector2D &vector) const;
 	const bool operator!=(const Vector2D &vector) const;
@@ -35,12 +35,12 @@ private:
 	float matrix[4];
 public:
 	Matrix2D();
-	Matrix2D(const float _matrix[2][2]);
-	Matrix2D(const float& a, const float& b, const float& c, const float& d);
+	Matrix2D(float _matrix[2][2]);
+	Matrix2D(float a, float b, float c, float d);
 	Matrix2D(std::initializer_list<std::initializer_list<float>> _matrix);
 	
-	const float& operator[](int index) const;
-	const float& operator()(int x, int y) const;
+	float operator[](int index) const;
+	float operator()(int x, int y) const;
 	
 	const bool operator==(const Matrix2D &_matrix) const;
 	const bool operator!=(const Matrix2D &_matrix) const;
@@ -53,3 +53,6 @@ public:
 	
 	~Matrix2D() = default;
 };
+
+Vector2D API operator*(float scalar, const Vector2D &vector);
+Matrix2D API operator*(float scalar, const Matrix2D &matrix);

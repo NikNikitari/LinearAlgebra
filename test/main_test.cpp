@@ -96,6 +96,12 @@ TEST_F(Vector2DTest, DotProduct) {
 	EXPECT_EQ(vec1 * vec0, vec0 * vec1);
 	EXPECT_EQ(vec1 * vec1, 5);
 }
+TEST_F(Vector2DTest, ScalarMultiplication) {
+	EXPECT_EQ(1.0f * vec0, vec0);
+	EXPECT_EQ(1.0f * vec1, vec1);
+	EXPECT_EQ(2.0f * vec0, vec0);
+	EXPECT_EQ(2.0f * vec1, Vector2D(2, 4));
+}
 
 TEST_F(Vector3DTest, GetByIndex) {
 	EXPECT_EQ(vec1[0], 1);
@@ -230,6 +236,20 @@ TEST_F(Matrix2DTest, MatrixVectorMultiplication) {
 	EXPECT_EQ(matrix0 * vec1, vec0);
 	EXPECT_EQ(matrix1 * vec1, vec1);
 	EXPECT_EQ(matrix2 * vec1, Vector2D(5, 13));
+}
+TEST_F(Matrix2DTest, ScalarMultiplication) {
+	EXPECT_EQ(1.0f * matrix0, matrix0);
+	EXPECT_EQ(1.0f * matrix1, matrix1);
+	EXPECT_EQ(1.0f * matrix2, matrix2);
+	EXPECT_EQ(2.0f * matrix0, matrix0);
+	EXPECT_EQ(2.0f * matrix1, Matrix2D({
+		{2, 0},
+		{0, 2}
+	}));
+	EXPECT_EQ(3.0f * matrix2, Matrix2D({
+		{3, 6},
+		{9, 15}
+	}));
 }
 
 TEST_F(Matrix3DTest, GetByIndex) {

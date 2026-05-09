@@ -3,8 +3,8 @@
 #include <stdexcept>
 
 Vector4D::Vector4D(): x(0), y(0), z(0), w(0) {}
-Vector4D::Vector4D(const float& _x, const float& _y, const float& _z, const float& _w): x(_x), y(_y), z(_z), w(_w) {}
-Vector4D::Vector4D(const float vector[4]) : x(vector[0]), y(vector[1]), z(vector[2]), w(vector[3]) {}
+Vector4D::Vector4D(float _x, float _y, float _z, float _w): x(_x), y(_y), z(_z), w(_w) {}
+Vector4D::Vector4D(float vector[4]) : x(vector[0]), y(vector[1]), z(vector[2]), w(vector[3]) {}
 Vector4D::Vector4D(std::initializer_list<float> vector) {
 	if (vector.size() != 4) throw std::invalid_argument("Vector must be size 4");
 	x = *vector.begin();
@@ -13,7 +13,7 @@ Vector4D::Vector4D(std::initializer_list<float> vector) {
 	w = *(vector.begin() + 3);
 }
 
-const float &Vector4D::operator[](int index) const {
+float Vector4D::operator[](int index) const {
 	if (index == 0) return x;
     if (index == 1) return y;
 	if (index == 2) return z;
@@ -36,7 +36,7 @@ float Vector4D::operator*(const Vector4D &vector) {
 }
 
 Matrix4D::Matrix4D(): matrix{} {}
-Matrix4D::Matrix4D(const float _matrix[4][4]) {
+Matrix4D::Matrix4D(float _matrix[4][4]) {
 	matrix[0]  = _matrix[0][0];
 	matrix[1]  = _matrix[1][0];
 	matrix[2]  = _matrix[2][0];
@@ -54,7 +54,7 @@ Matrix4D::Matrix4D(const float _matrix[4][4]) {
 	matrix[14] = _matrix[2][3];
 	matrix[15] = _matrix[3][3];
 }
-Matrix4D::Matrix4D(const float &a0, const float &a1, const float &a2, const float &a3, const float &a4, const float &a5, const float &a6, const float &a7, const float &a8, const float& a9, const float& a10, const float& a11, const float& a12, const float& a13, const float& a14, const float& a15) {
+Matrix4D::Matrix4D(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8, float a9, float a10, float a11, float a12, float a13, float a14, float a15) {
 	matrix[0]  = a0;
 	matrix[1]  = a1;
 	matrix[2]  = a2;
@@ -85,11 +85,11 @@ Matrix4D::Matrix4D(std::initializer_list<std::initializer_list<float>> _matrix) 
 	}
 }
 
-const float &Matrix4D::operator[](int index) const {
+float Matrix4D::operator[](int index) const {
 	if (index > 15 || index < 0) throw std::out_of_range("Index out of range");
 	return matrix[index];
 }
-const float &Matrix4D::operator()(int x, int y) const {
+float Matrix4D::operator()(int x, int y) const {
 	if (x > 3 || y > 3 || x < 0 || y < 0) throw std::out_of_range("Index out of range");
 	return matrix[x+y*3];
 }

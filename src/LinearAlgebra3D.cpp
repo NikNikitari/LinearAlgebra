@@ -3,8 +3,8 @@
 #include <stdexcept>
 
 Vector3D::Vector3D(): x(0), y(0), z(0) {}
-Vector3D::Vector3D(const float vector[3]):x(vector[0]), y(vector[1]), z(vector[2]) {}
-Vector3D::Vector3D(const float &_x, const float &_y, const float& _z): x(_x), y(_y), z(_z) {}
+Vector3D::Vector3D(float vector[3]):x(vector[0]), y(vector[1]), z(vector[2]) {}
+Vector3D::Vector3D(float _x, float _y, float _z): x(_x), y(_y), z(_z) {}
 Vector3D::Vector3D(std::initializer_list<float> vector) {
 	if (vector.size() != 3) throw std::invalid_argument("Vector must be size 3");
 	x = *vector.begin();
@@ -12,7 +12,7 @@ Vector3D::Vector3D(std::initializer_list<float> vector) {
 	z = *(vector.begin() + 2);
 }
 
-const float &Vector3D::operator[](int index) const {
+float Vector3D::operator[](int index) const {
 	if (index == 0) return x;
     if (index == 1) return y;
 	if (index == 2) return z;
@@ -34,7 +34,7 @@ float Vector3D::operator*(const Vector3D &vector) {
 }
 
 Matrix3D::Matrix3D(): matrix{} {}
-Matrix3D::Matrix3D(const float _matrix[3][3]) {
+Matrix3D::Matrix3D(float _matrix[3][3]) {
 	matrix[0] = _matrix[0][0];
 	matrix[1] = _matrix[1][0];
 	matrix[2] = _matrix[2][0];
@@ -45,7 +45,7 @@ Matrix3D::Matrix3D(const float _matrix[3][3]) {
 	matrix[7] = _matrix[1][2];
 	matrix[8] = _matrix[2][2];
 }
-Matrix3D::Matrix3D(const float &a0, const float &a1, const float &a2, const float &a3, const float &a4, const float &a5, const float &a6, const float &a7, const float &a8) {
+Matrix3D::Matrix3D(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8) {
 	matrix[0] = a0;
 	matrix[1] = a1;
 	matrix[2] = a2;
@@ -69,11 +69,11 @@ Matrix3D::Matrix3D(std::initializer_list<std::initializer_list<float>> _matrix) 
 	}
 }
 
-const float &Matrix3D::operator[](int index) const {
+float Matrix3D::operator[](int index) const {
 	if (index > 8 || index < 0) throw std::out_of_range("Index out of range");
 	return matrix[index];
 }
-const float &Matrix3D::operator()(int x, int y) const {
+float Matrix3D::operator()(int x, int y) const {
 	if (x > 2 || y > 2 || x < 0 || y < 0) throw std::out_of_range("Index out of range");
 	return matrix[x+y*3];
 }
