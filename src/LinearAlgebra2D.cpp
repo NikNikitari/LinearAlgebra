@@ -91,6 +91,11 @@ Matrix2D operator*(float scalar, const Matrix2D &matrix) {
 	return Matrix2D(scalar * matrix[0], scalar * matrix[1], scalar * matrix[2], scalar * matrix[3]);
 }
 
-float Matrix2D::det() {
+Matrix2D Matrix2D::transpose() {
+	return Matrix2D(matrix[0], matrix[2], matrix[1], matrix[3]);
+}
+
+float Matrix2D::det()
+{
 	return matrix[0] * matrix[3] - matrix[1] * matrix[2];
 }

@@ -49,6 +49,7 @@ public:
 	Matrix2D operator*(const Matrix2D &_matrix);
 	Vector2D operator*(const Vector2D &vector);
 	
+	Matrix2D transpose();
 	float det();
 	
 	~Matrix2D() = default;

@@ -39,13 +39,13 @@ Vector3D operator*(float scalar, const Vector3D &vector) {
 Matrix3D::Matrix3D(): matrix{} {}
 Matrix3D::Matrix3D(float _matrix[3][3]) {
 	matrix[0] = _matrix[0][0];
-	matrix[1] = _matrix[1][0];
-	matrix[2] = _matrix[2][0];
-	matrix[3] = _matrix[0][1];
+	matrix[1] = _matrix[0][1];
+	matrix[2] = _matrix[0][2];
+	matrix[3] = _matrix[1][0];
 	matrix[4] = _matrix[1][1];
-	matrix[5] = _matrix[2][1];
-	matrix[6] = _matrix[0][2];
-	matrix[7] = _matrix[1][2];
+	matrix[5] = _matrix[1][2];
+	matrix[6] = _matrix[2][0];
+	matrix[7] = _matrix[2][1];
 	matrix[8] = _matrix[2][2];
 }
 Matrix3D::Matrix3D(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8) {

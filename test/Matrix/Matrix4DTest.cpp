@@ -116,3 +116,10 @@ TEST_F(Matrix4DTest, ScalarMultiplication) {
 		{370, 410, 430, 470}
 	}));
 }
+
+TEST_F(Matrix4DTest, Det) {
+	EXPECT_EQ(matrix0.det(), 0);
+	EXPECT_EQ(matrix1.det(), 1);
+	EXPECT_EQ(matrix1.det() * matrix0.det(), (matrix1 * matrix0).det());
+	EXPECT_EQ(matrix1.det() * matrix2.det(), (matrix1 * matrix2).det());
+}

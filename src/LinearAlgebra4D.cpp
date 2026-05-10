@@ -41,20 +41,20 @@ Vector4D operator*(float scalar, const Vector4D &vector) {
 Matrix4D::Matrix4D(): matrix{} {}
 Matrix4D::Matrix4D(float _matrix[4][4]) {
 	matrix[0]  = _matrix[0][0];
-	matrix[1]  = _matrix[1][0];
-	matrix[2]  = _matrix[2][0];
-	matrix[3]  = _matrix[3][0];
-	matrix[4]  = _matrix[0][1];
+	matrix[1]  = _matrix[0][1];
+	matrix[2]  = _matrix[0][2];
+	matrix[3]  = _matrix[0][3];
+	matrix[4]  = _matrix[1][0];
 	matrix[5]  = _matrix[1][1];
-	matrix[6]  = _matrix[2][1];
-	matrix[7]  = _matrix[3][1];
-	matrix[8]  = _matrix[0][2];
-	matrix[9]  = _matrix[1][2];
+	matrix[6]  = _matrix[1][2];
+	matrix[7]  = _matrix[1][3];
+	matrix[8]  = _matrix[2][0];
+	matrix[9]  = _matrix[2][1];
 	matrix[10] = _matrix[2][2];
-	matrix[11] = _matrix[3][2];
-	matrix[12] = _matrix[0][3];
-	matrix[13] = _matrix[1][3];
-	matrix[14] = _matrix[2][3];
+	matrix[11] = _matrix[2][3];
+	matrix[12] = _matrix[3][0];
+	matrix[13] = _matrix[3][1];
+	matrix[14] = _matrix[3][2];
 	matrix[15] = _matrix[3][3];
 }
 Matrix4D::Matrix4D(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8, float a9, float a10, float a11, float a12, float a13, float a14, float a15) {

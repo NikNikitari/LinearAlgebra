@@ -108,3 +108,10 @@ TEST_F(Matrix3DTest, ScalarMultiplication) {
 		{130, 170, 190}
 	}));
 }
+
+TEST_F(Matrix3DTest, Det) {
+	EXPECT_EQ(matrix0.det(), 0);
+	EXPECT_EQ(matrix1.det(), 1);
+	EXPECT_EQ(matrix1.det() * matrix0.det(), (matrix1 * matrix0).det());
+	EXPECT_EQ(matrix1.det() * matrix2.det(), (matrix1 * matrix2).det());
+}
