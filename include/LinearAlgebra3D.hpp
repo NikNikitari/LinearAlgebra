@@ -50,6 +50,7 @@ public:
 	Vector3D operator*(const Vector3D &vector);
 	
 	Matrix3D transpose();
+	float minor(int i, int j);
 	float det();
 	
 	~Matrix3D() = default;

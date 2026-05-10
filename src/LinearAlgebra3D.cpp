@@ -142,6 +142,11 @@ Matrix3D Matrix3D::transpose() {
 	return Matrix3D(matrix[0], matrix[3], matrix[6], matrix[1], matrix[4], matrix[7], matrix[2], matrix[5], matrix[8]);
 }
 
+float Matrix3D::minor(int i, int j) {
+	if (i > 2 || j > 2 || i < 0 || j < 0) throw std::out_of_range("Index out of range");
+	return matrix[(i ? 0 : 1) + (j ? 0 : 3)] * matrix[(i > 1 ? 1 : 2) + (j > 1 ? 3: 6)] - matrix[(i ? 0 : 1) + (j > 1 ? 3: 6)] * matrix[(i > 1 ? 1 : 2) + (j ? 0 : 3)];
+}
+
 float Matrix3D::det() {
 	return 
 	matrix[0] * matrix[4] * matrix[8] + 

@@ -100,7 +100,6 @@ float Matrix2D::minor(int i, int j) {
 	return matrix[(i ? 0 : 1) + (j ? 0 : 2)];
 }
 
-float Matrix2D::det()
-{
+float Matrix2D::det() {
 	return matrix[0] * matrix[3] - matrix[1] * matrix[2];
 }
