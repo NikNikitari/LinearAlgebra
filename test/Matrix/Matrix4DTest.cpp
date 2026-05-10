@@ -123,3 +123,21 @@ TEST_F(Matrix4DTest, Det) {
 	EXPECT_EQ(matrix1.det() * matrix0.det(), (matrix1 * matrix0).det());
 	EXPECT_EQ(matrix1.det() * matrix2.det(), (matrix1 * matrix2).det());
 }
+TEST_F(Matrix4DTest, Transpose) {
+	EXPECT_EQ(matrix0.transpose().transpose(), matrix0);
+	EXPECT_EQ(matrix1.transpose().transpose(), matrix1);
+	EXPECT_EQ(matrix2.transpose().transpose(), matrix2);
+	
+	EXPECT_EQ(matrix0.transpose().det(), matrix0.det());
+	EXPECT_EQ(matrix1.transpose().det(), matrix1.det());
+	EXPECT_EQ(matrix2.transpose().det(), matrix2.det());
+	
+	
+	EXPECT_EQ(matrix0.transpose(), matrix0);
+	EXPECT_EQ(matrix1.transpose(), matrix1);
+	EXPECT_NE(matrix2.transpose(), matrix2);
+	
+	EXPECT_EQ(matrix1 * matrix1.transpose(), matrix1);
+	EXPECT_EQ((2 * matrix2).transpose(), 2 * matrix2.transpose());
+	EXPECT_EQ((matrix2 * matrix2).transpose(), matrix2.transpose() * matrix2.transpose());
+}

@@ -177,7 +177,17 @@ Matrix4D operator*(float scalar, const Matrix4D& matrix) {
 	);
 }
 
-float Matrix4D::det() {
+Matrix4D Matrix4D::transpose() {
+	return Matrix4D(
+		matrix[0], matrix[4], matrix[8] , matrix[12], 
+		matrix[1], matrix[5], matrix[9] , matrix[13], 
+		matrix[2], matrix[6], matrix[10], matrix[14], 
+		matrix[3], matrix[7], matrix[11], matrix[15]  
+	);
+}
+
+float Matrix4D::det()
+{
 	return 
 	matrix[0] * matrix[5] * matrix[10] * matrix[15] + 
 	matrix[0] * matrix[6] * matrix[11] * matrix[13] + 
@@ -202,5 +212,5 @@ float Matrix4D::det() {
 	matrix[2] * matrix[7] * matrix[9]  * matrix[12] - 
 	matrix[3] * matrix[4] * matrix[9]  * matrix[14] - 
 	matrix[3] * matrix[5] * matrix[10] * matrix[12] - 
-	matrix[3] * matrix[6] * matrix[8]  * matrix[13];  
+	matrix[3] * matrix[6] * matrix[8]  * matrix[13];
 }
