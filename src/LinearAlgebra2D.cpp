@@ -95,6 +95,11 @@ Matrix2D Matrix2D::transpose() {
 	return Matrix2D(matrix[0], matrix[2], matrix[1], matrix[3]);
 }
 
+float Matrix2D::minor(int i, int j) {
+	if (i > 1 || j > 1 || i < 0 || j < 0) throw std::out_of_range("Index out of range");
+	return matrix[(i ? 0 : 1) + (j ? 0 : 2)];
+}
+
 float Matrix2D::det()
 {
 	return matrix[0] * matrix[3] - matrix[1] * matrix[2];

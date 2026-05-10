@@ -112,7 +112,6 @@ TEST_F(Matrix2DTest, Transpose) {
 	EXPECT_EQ(matrix1.transpose().det(), matrix1.det());
 	EXPECT_EQ(matrix2.transpose().det(), matrix2.det());
 	
-	
 	EXPECT_EQ(matrix0.transpose(), matrix0);
 	EXPECT_EQ(matrix1.transpose(), matrix1);
 	EXPECT_NE(matrix2.transpose(), matrix2);
@@ -120,4 +119,20 @@ TEST_F(Matrix2DTest, Transpose) {
 	EXPECT_EQ(matrix1 * matrix1.transpose(), matrix1);
 	EXPECT_EQ((2 * matrix2).transpose(), 2 * matrix2.transpose());
 	EXPECT_EQ((matrix2 * matrix2).transpose(), matrix2.transpose() * matrix2.transpose());
+}
+TEST_F(Matrix2DTest, Minor) {
+	EXPECT_EQ(matrix0.minor(0, 0), 0);
+	EXPECT_EQ(matrix0.minor(1, 0), 0);
+	EXPECT_EQ(matrix0.minor(0, 1), 0);
+	EXPECT_EQ(matrix0.minor(1, 1), 0);
+	
+	EXPECT_EQ(matrix1.minor(0, 0), 1);
+	EXPECT_EQ(matrix1.minor(1, 0), 0);
+	EXPECT_EQ(matrix1.minor(0, 1), 0);
+	EXPECT_EQ(matrix1.minor(1, 1), 1);
+	
+	EXPECT_EQ(matrix2.minor(0, 0), 5);
+	EXPECT_EQ(matrix2.minor(1, 0), 3);
+	EXPECT_EQ(matrix2.minor(0, 1), 2);
+	EXPECT_EQ(matrix2.minor(1, 1), 1);
 }
