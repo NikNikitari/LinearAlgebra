@@ -50,6 +50,7 @@ public:
 	Vector4D operator*(const Vector4D &vector);
 	
 	Matrix4D transpose();
+	float minor(int i, int j);
 	float det();
 	
 	~Matrix4D() = default;

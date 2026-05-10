@@ -141,3 +141,55 @@ TEST_F(Matrix4DTest, Transpose) {
 	EXPECT_EQ((2 * matrix2).transpose(), 2 * matrix2.transpose());
 	EXPECT_EQ((matrix2 * matrix2).transpose(), matrix2.transpose() * matrix2.transpose());
 }
+TEST_F(Matrix4DTest, Minor) {
+	EXPECT_EQ(matrix0.minor(0, 0), 0);
+	EXPECT_EQ(matrix0.minor(1, 0), 0);
+	EXPECT_EQ(matrix0.minor(2, 0), 0);
+	EXPECT_EQ(matrix0.minor(3, 0), 0);
+	EXPECT_EQ(matrix0.minor(0, 1), 0);
+	EXPECT_EQ(matrix0.minor(1, 1), 0);
+	EXPECT_EQ(matrix0.minor(2, 1), 0);
+	EXPECT_EQ(matrix0.minor(3, 1), 0);
+	EXPECT_EQ(matrix0.minor(0, 2), 0);
+	EXPECT_EQ(matrix0.minor(1, 2), 0);
+	EXPECT_EQ(matrix0.minor(2, 2), 0);
+	EXPECT_EQ(matrix0.minor(3, 2), 0);
+	EXPECT_EQ(matrix0.minor(0, 3), 0);
+	EXPECT_EQ(matrix0.minor(1, 3), 0);
+	EXPECT_EQ(matrix0.minor(2, 3), 0);
+	EXPECT_EQ(matrix0.minor(3, 3), 0);
+	
+	EXPECT_EQ(matrix1.minor(0, 0), 1);
+	EXPECT_EQ(matrix1.minor(1, 0), 0);
+	EXPECT_EQ(matrix1.minor(2, 0), 0);
+	EXPECT_EQ(matrix1.minor(3, 0), 0);
+	EXPECT_EQ(matrix1.minor(0, 1), 0);
+	EXPECT_EQ(matrix1.minor(1, 1), 1);
+	EXPECT_EQ(matrix1.minor(2, 1), 0);
+	EXPECT_EQ(matrix1.minor(3, 1), 0);
+	EXPECT_EQ(matrix1.minor(0, 2), 0);
+	EXPECT_EQ(matrix1.minor(1, 2), 0);
+	EXPECT_EQ(matrix1.minor(2, 2), 1);
+	EXPECT_EQ(matrix1.minor(3, 2), 0);
+	EXPECT_EQ(matrix1.minor(0, 3), 0);
+	EXPECT_EQ(matrix1.minor(1, 3), 0);
+	EXPECT_EQ(matrix1.minor(2, 3), 0);
+	EXPECT_EQ(matrix1.minor(3, 3), 1);
+	
+	EXPECT_EQ(matrix2.minor(0, 0), -600);
+	EXPECT_EQ(matrix2.minor(1, 0), -840);
+	EXPECT_EQ(matrix2.minor(2, 0), 240);
+	EXPECT_EQ(matrix2.minor(3, 0), 480);
+	EXPECT_EQ(matrix2.minor(0, 1), -370);
+	EXPECT_EQ(matrix2.minor(1, 1), -488);
+	EXPECT_EQ(matrix2.minor(2, 1), -42);
+	EXPECT_EQ(matrix2.minor(3, 1), 96);
+	EXPECT_EQ(matrix2.minor(0, 2), 0);
+	EXPECT_EQ(matrix2.minor(1, 2), -120);
+	EXPECT_EQ(matrix2.minor(2, 2), -180);
+	EXPECT_EQ(matrix2.minor(3, 2), -60);
+	EXPECT_EQ(matrix2.minor(0, 3), 70);
+	EXPECT_EQ(matrix2.minor(1, 3), 8);
+	EXPECT_EQ(matrix2.minor(2, 3), -78);
+	EXPECT_EQ(matrix2.minor(3, 3), -36);
+}

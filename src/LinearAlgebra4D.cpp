@@ -186,8 +186,25 @@ Matrix4D Matrix4D::transpose() {
 	);
 }
 
-float Matrix4D::det()
-{
+float Matrix4D::minor(int i, int j) {
+	if (i > 3 || j > 3 || i < 0 || j < 0) throw std::out_of_range("Index out of range");
+	int a[6];
+	a[0] = i ? 0 : 1;
+	a[1] = i > 1 ? 1 : 2;
+	a[2] = i > 2 ? 2 : 3;
+	a[3] = j ? 0 : 4;
+	a[4] = j > 1 ? 4: 8;
+	a[5] = j > 2 ? 8 : 12;
+	return 
+	matrix[a[0] + a[3]] * matrix[a[1] + a[4]] * matrix[a[2] + a[5]] + 
+	matrix[a[1] + a[3]] * matrix[a[2] + a[4]] * matrix[a[0] + a[5]] + 
+	matrix[a[2] + a[3]] * matrix[a[0] + a[4]] * matrix[a[1] + a[5]] - 
+	matrix[a[2] + a[3]] * matrix[a[1] + a[4]] * matrix[a[0] + a[5]] - 
+	matrix[a[0] + a[3]] * matrix[a[2] + a[4]] * matrix[a[1] + a[5]] - 
+	matrix[a[1] + a[3]] * matrix[a[0] + a[4]] * matrix[a[2] + a[5]];  
+}
+
+float Matrix4D::det() {
 	return 
 	matrix[0] * matrix[5] * matrix[10] * matrix[15] + 
 	matrix[0] * matrix[6] * matrix[11] * matrix[13] + 
