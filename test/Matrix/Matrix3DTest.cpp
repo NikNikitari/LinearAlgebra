@@ -16,6 +16,14 @@ protected:
 	});
 };
 
+void ExpectMatrixNear(const Matrix3D& a, const Matrix3D& b, double eps) {
+    for (int r = 0; r < 3; ++r) {
+        for (int c = 0; c < 3; ++c) {
+            EXPECT_NEAR(a(r, c), b(r, c), eps);
+        }
+    }
+}
+
 TEST_F(Matrix3DTest, GetByIndex) {
 	EXPECT_EQ(matrix2[0], 1);
 	EXPECT_EQ(matrix2[1], 2);
@@ -194,4 +202,8 @@ TEST_F(Matrix3DTest, Cofactor) {
 	EXPECT_EQ(matrix2.cofactor(0, 2), 1  );
 	EXPECT_EQ(matrix2.cofactor(1, 2), 4);
 	EXPECT_EQ(matrix2.cofactor(2, 2), -3);
+}
+TEST_F(Matrix3DTest, Inversion) {
+	EXPECT_EQ(matrix1, matrix1.inversion());
+	ExpectMatrixNear(matrix2.inversion() * matrix2, matrix1, 1e-6);
 }
