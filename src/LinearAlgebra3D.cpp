@@ -155,3 +155,6 @@ float Matrix3D::minor(int i, int j) {
 	if (i > 2 || j > 2 || i < 0 || j < 0) throw std::out_of_range("Index out of range");
 	return matrix[(i ? 0 : 1) + (j ? 0 : 3)] * matrix[(i > 1 ? 1 : 2) + (j > 1 ? 3: 6)] - matrix[(i ? 0 : 1) + (j > 1 ? 3: 6)] * matrix[(i > 1 ? 1 : 2) + (j ? 0 : 3)];
 }
+float Matrix3D::cofactor(int i, int j) {
+	return minor(i, j) * ((i+j) % 2 ? -1 : 1);
+}

@@ -52,6 +52,7 @@ public:
 	float det();
 	Matrix3D transpose();
 	float minor(int i, int j);
+	float cofactor(int i, int j);
 	
 	~Matrix3D() = default;
 };
