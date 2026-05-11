@@ -18,6 +18,14 @@ protected:
 	});
 };
 
+void ExpectMatrixNear(const Matrix4D& a, const Matrix4D& b, double eps) {
+    for (int r = 0; r < 4; ++r) {
+        for (int c = 0; c < 4; ++c) {
+            EXPECT_NEAR(a(r, c), b(r, c), eps);
+        }
+    }
+}
+
 TEST_F(Matrix4DTest, GetByIndex) {
 	EXPECT_EQ(matrix2[0], 1);
 	EXPECT_EQ(matrix2[1], 2);
@@ -244,4 +252,8 @@ TEST_F(Matrix4DTest, Cofactor) {
 	EXPECT_EQ(matrix2.cofactor(1, 3), 8);
 	EXPECT_EQ(matrix2.cofactor(2, 3), 78);
 	EXPECT_EQ(matrix2.cofactor(3, 3), -36);
+}
+TEST_F(Matrix4DTest, Inversion) {
+	EXPECT_EQ(matrix1, matrix1.inversion());
+	ExpectMatrixNear(matrix2.inversion() * matrix2, matrix1, 1e-6);
 }

@@ -157,16 +157,17 @@ float Matrix3D::minor(int i, int j) {
 }
 float Matrix3D::cofactor(int i, int j) {
 	return minor(i, j) * ((i+j) % 2 ? -1 : 1);
-}Matrix3D Matrix3D::inversion() {
+}
+Matrix3D Matrix3D::inversion() {
 	float det_matrix;
 	if ((det_matrix = det()) == 0) throw std::logic_error("The matrix must not be singular.");
 	return 1/det_matrix * Matrix3D(
 		minor(0, 0) , 
 		-minor(0, 1), 
-		minor(0, 2) ,  
+		minor(0, 2) , 
 		-minor(1, 0), 
 		minor(1, 1) , 
-		-minor(1, 2),  
+		-minor(1, 2), 
 		minor(2, 0) , 
 		-minor(2, 1), 
 		minor(2, 2)   
