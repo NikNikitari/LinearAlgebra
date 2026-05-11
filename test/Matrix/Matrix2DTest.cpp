@@ -152,3 +152,7 @@ TEST_F(Matrix2DTest, Cofactor) {
 	EXPECT_EQ(matrix2.cofactor(0, 1), -2);
 	EXPECT_EQ(matrix2.cofactor(1, 1), 1);
 }
+TEST_F(Matrix2DTest, Inversion) {
+	EXPECT_EQ(matrix1, matrix1.inversion());
+	EXPECT_EQ(matrix2.inversion() * matrix2, matrix1);
+}

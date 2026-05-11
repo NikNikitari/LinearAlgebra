@@ -104,3 +104,14 @@ float Matrix2D::minor(int i, int j) {
 float Matrix2D::cofactor(int i, int j) {
 	return minor(i, j) * ((i+j) % 2 ? -1 : 1);
 }
+
+Matrix2D Matrix2D::inversion() {
+	float det_matrix;
+	if ((det_matrix = det()) == 0) throw std::logic_error("The matrix must not be singular.");
+	return 1/det_matrix * Matrix2D(
+		minor(0, 0) , 
+		-minor(0, 1), 
+		-minor(1, 0), 
+		minor(1, 1)   
+	);
+}
