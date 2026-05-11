@@ -49,9 +49,9 @@ public:
 	Matrix4D operator*(const Matrix4D &_matrix);
 	Vector4D operator*(const Vector4D &vector);
 	
+	float det();
 	Matrix4D transpose();
 	float minor(int i, int j);
-	float det();
 	
 	~Matrix4D() = default;
 };

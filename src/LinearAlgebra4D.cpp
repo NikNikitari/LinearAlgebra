@@ -177,33 +177,6 @@ Matrix4D operator*(float scalar, const Matrix4D& matrix) {
 	);
 }
 
-Matrix4D Matrix4D::transpose() {
-	return Matrix4D(
-		matrix[0], matrix[4], matrix[8] , matrix[12], 
-		matrix[1], matrix[5], matrix[9] , matrix[13], 
-		matrix[2], matrix[6], matrix[10], matrix[14], 
-		matrix[3], matrix[7], matrix[11], matrix[15]  
-	);
-}
-
-float Matrix4D::minor(int i, int j) {
-	if (i > 3 || j > 3 || i < 0 || j < 0) throw std::out_of_range("Index out of range");
-	int a[6];
-	a[0] = i ? 0 : 1;
-	a[1] = i > 1 ? 1 : 2;
-	a[2] = i > 2 ? 2 : 3;
-	a[3] = j ? 0 : 4;
-	a[4] = j > 1 ? 4: 8;
-	a[5] = j > 2 ? 8 : 12;
-	return 
-	matrix[a[0] + a[3]] * matrix[a[1] + a[4]] * matrix[a[2] + a[5]] + 
-	matrix[a[1] + a[3]] * matrix[a[2] + a[4]] * matrix[a[0] + a[5]] + 
-	matrix[a[2] + a[3]] * matrix[a[0] + a[4]] * matrix[a[1] + a[5]] - 
-	matrix[a[2] + a[3]] * matrix[a[1] + a[4]] * matrix[a[0] + a[5]] - 
-	matrix[a[0] + a[3]] * matrix[a[2] + a[4]] * matrix[a[1] + a[5]] - 
-	matrix[a[1] + a[3]] * matrix[a[0] + a[4]] * matrix[a[2] + a[5]];  
-}
-
 float Matrix4D::det() {
 	return 
 	matrix[0] * matrix[5] * matrix[10] * matrix[15] + 
@@ -230,4 +203,29 @@ float Matrix4D::det() {
 	matrix[3] * matrix[4] * matrix[9]  * matrix[14] - 
 	matrix[3] * matrix[5] * matrix[10] * matrix[12] - 
 	matrix[3] * matrix[6] * matrix[8]  * matrix[13];
+}
+Matrix4D Matrix4D::transpose() {
+	return Matrix4D(
+		matrix[0], matrix[4], matrix[8] , matrix[12], 
+		matrix[1], matrix[5], matrix[9] , matrix[13], 
+		matrix[2], matrix[6], matrix[10], matrix[14], 
+		matrix[3], matrix[7], matrix[11], matrix[15]  
+	);
+}
+float Matrix4D::minor(int i, int j) {
+	if (i > 3 || j > 3 || i < 0 || j < 0) throw std::out_of_range("Index out of range");
+	int a[6];
+	a[0] = i ? 0 : 1;
+	a[1] = i > 1 ? 1 : 2;
+	a[2] = i > 2 ? 2 : 3;
+	a[3] = j ? 0 : 4;
+	a[4] = j > 1 ? 4: 8;
+	a[5] = j > 2 ? 8 : 12;
+	return 
+	matrix[a[0] + a[3]] * matrix[a[1] + a[4]] * matrix[a[2] + a[5]] + 
+	matrix[a[1] + a[3]] * matrix[a[2] + a[4]] * matrix[a[0] + a[5]] + 
+	matrix[a[2] + a[3]] * matrix[a[0] + a[4]] * matrix[a[1] + a[5]] - 
+	matrix[a[2] + a[3]] * matrix[a[1] + a[4]] * matrix[a[0] + a[5]] - 
+	matrix[a[0] + a[3]] * matrix[a[2] + a[4]] * matrix[a[1] + a[5]] - 
+	matrix[a[1] + a[3]] * matrix[a[0] + a[4]] * matrix[a[2] + a[5]];  
 }

@@ -49,9 +49,9 @@ public:
 	Matrix3D operator*(const Matrix3D &_matrix);
 	Vector3D operator*(const Vector3D &vector);
 	
+	float det();
 	Matrix3D transpose();
 	float minor(int i, int j);
-	float det();
 	
 	~Matrix3D() = default;
 };

@@ -136,3 +136,19 @@ TEST_F(Matrix2DTest, Minor) {
 	EXPECT_EQ(matrix2.minor(0, 1), 2);
 	EXPECT_EQ(matrix2.minor(1, 1), 1);
 }
+TEST_F(Matrix2DTest, Cofactor) {
+	EXPECT_EQ(matrix0.cofactor(0, 0), 0);
+	EXPECT_EQ(matrix0.cofactor(1, 0), 0);
+	EXPECT_EQ(matrix0.cofactor(0, 1), 0);
+	EXPECT_EQ(matrix0.cofactor(1, 1), 0);
+	
+	EXPECT_EQ(matrix1.cofactor(0, 0), 1);
+	EXPECT_EQ(matrix1.cofactor(1, 0), 0);
+	EXPECT_EQ(matrix1.cofactor(0, 1), 0);
+	EXPECT_EQ(matrix1.cofactor(1, 1), 1);
+	
+	EXPECT_EQ(matrix2.cofactor(0, 0), 5);
+	EXPECT_EQ(matrix2.cofactor(1, 0), -3);
+	EXPECT_EQ(matrix2.cofactor(0, 1), -2);
+	EXPECT_EQ(matrix2.cofactor(1, 1), 1);
+}

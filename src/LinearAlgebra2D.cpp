@@ -91,15 +91,16 @@ Matrix2D operator*(float scalar, const Matrix2D &matrix) {
 	return Matrix2D(scalar * matrix[0], scalar * matrix[1], scalar * matrix[2], scalar * matrix[3]);
 }
 
+float Matrix2D::det() {
+	return matrix[0] * matrix[3] - matrix[1] * matrix[2];
+}
 Matrix2D Matrix2D::transpose() {
 	return Matrix2D(matrix[0], matrix[2], matrix[1], matrix[3]);
 }
-
 float Matrix2D::minor(int i, int j) {
 	if (i > 1 || j > 1 || i < 0 || j < 0) throw std::out_of_range("Index out of range");
 	return matrix[(i ? 0 : 1) + (j ? 0 : 2)];
 }
-
-float Matrix2D::det() {
-	return matrix[0] * matrix[3] - matrix[1] * matrix[2];
+float Matrix2D::cofactor(int i, int j) {
+	return minor(i, j) * ((i+j) % 2 ? -1 : 1);
 }
