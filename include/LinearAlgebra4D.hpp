@@ -52,6 +52,7 @@ public:
 	float det();
 	Matrix4D transpose();
 	float minor(int i, int j);
+	float cofactor(int i, int j);
 	
 	~Matrix4D() = default;
 };

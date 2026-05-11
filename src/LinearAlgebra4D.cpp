@@ -229,3 +229,6 @@ float Matrix4D::minor(int i, int j) {
 	matrix[a[0] + a[3]] * matrix[a[2] + a[4]] * matrix[a[1] + a[5]] - 
 	matrix[a[1] + a[3]] * matrix[a[0] + a[4]] * matrix[a[2] + a[5]];  
 }
+float Matrix4D::cofactor(int i, int j) {
+	return minor(i, j) * ((i+j) % 2 ? -1 : 1);
+}
